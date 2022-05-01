@@ -24,25 +24,25 @@
       let lijstPunten = [0, 0, 0, 0, 0];
       let current = 0;
 
-      function calc() {
+      function calc(n) {
         if (selectedValue === "soloslim") {
-          add(1000, 250);
+          add(1000 * n, 250 * n);
         }
         if (selectedValue === "blote") {
-          add(800, 200);
+          add(800 * n, 200 * n);
         }
         if (selectedValue === "grote") {
-          add(320, 80);
+          add(320 * n, 80 * n);
         }
         if (selectedValue === "abba") {
-          add(240, 60);
+          add(240 * n, 60 * n);
         }
         if (selectedValue === "kleine") {
-          add(160, 40);
+          add(160 * n, 40 * n);
         }
         if (selectedValue === "normaal") {
           tussen = parseInt(document.getElementById("slagen").value);
-          add(2 * (tussen * 5 + 10), tussen * 5 + 10);
+          add(2 * (tussen * 5 + 10) * n, (tussen * 5 + 10) * n);
         }
 
         document.getElementById("score1").innerHTML = lijstPunten[0];
@@ -117,7 +117,6 @@
       }
     </script>
   </head>
-  <!-- create table -->
   <body>
     <h1 id="start">Kleurenwiezen</h1>
 
@@ -152,7 +151,8 @@
       </div>
       <div class="column">
         <h2>Volgende ronde starten</h2>
-        <button onclick="calc();">Indienen</button>
+        <button onclick="calc(1);">Indienen</button>
+        <button onclick="calc(2);">Dubbel indienen</button>
       </div>
     </div>
 
