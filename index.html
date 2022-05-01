@@ -1,0 +1,236 @@
+<html>
+  <head>
+    <style>
+      .column {
+        float: left;
+        width: 30%;
+      }
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+    <script>
+      let selectedValue;
+      let first;
+      let second;
+      let third;
+      let fourth;
+      let fifth;
+      let lijst;
+      let lijstPunten = [0, 0, 0, 0, 0];
+      let current = 0;
+
+      function calc() {
+        if (selectedValue === "soloslim") {
+          add(1000, 250);
+        }
+        if (selectedValue === "blote") {
+          add(800, 200);
+        }
+        if (selectedValue === "grote") {
+          add(320, 80);
+        }
+        if (selectedValue === "abba") {
+          add(240, 60);
+        }
+        if (selectedValue === "kleine") {
+          add(160, 40);
+        }
+        if (selectedValue === "normaal") {
+          tussen = parseInt(document.getElementById("slagen").value);
+          add(2 * (tussen * 5 + 10), tussen * 5 + 10);
+        }
+
+        document.getElementById("score1").innerHTML = lijstPunten[0];
+        document.getElementById("score2").innerHTML = lijstPunten[1];
+        document.getElementById("score3").innerHTML = lijstPunten[2];
+        document.getElementById("score4").innerHTML = lijstPunten[3];
+        document.getElementById("score5").innerHTML = lijstPunten[4];
+
+        current = (current + 1) % 5;
+        document.getElementById("start").innerHTML = "Deler: " + lijst[current];
+      }
+
+      function getSelectedValue() {
+        selectedValue = document.getElementById("selected").value;
+      }
+
+      function add(plus, minus) {
+        lijstPunten[current] += minus;
+        lijstPunten[0] -= minus;
+        lijstPunten[1] -= minus;
+        lijstPunten[2] -= minus;
+        lijstPunten[3] -= minus;
+        lijstPunten[4] -= minus;
+        if (document.getElementById("1").checked) {
+          lijstPunten[0] += plus;
+        }
+        if (document.getElementById("2").checked) {
+          lijstPunten[1] += plus;
+        }
+        if (document.getElementById("3").checked) {
+          lijstPunten[2] += plus;
+        }
+        if (document.getElementById("4").checked) {
+          lijstPunten[3] += plus;
+        }
+        if (document.getElementById("5").checked) {
+          lijstPunten[4] += plus;
+        }
+      }
+
+      function getPlayer() {
+        first = document.getElementById("first").value;
+        second = document.getElementById("second").value;
+        third = document.getElementById("third").value;
+        fourth = document.getElementById("fourth").value;
+        fifth = document.getElementById("fifth").value;
+        lijst = [first, second, third, fourth, fifth];
+        document.getElementById("name1").innerHTML = first;
+        document.getElementById("name2").innerHTML = second;
+        document.getElementById("name3").innerHTML = third;
+        document.getElementById("name4").innerHTML = fourth;
+        document.getElementById("name5").innerHTML = fifth;
+        document.getElementById("player1").innerHTML = first;
+        document.getElementById("player2").innerHTML = second;
+        document.getElementById("player3").innerHTML = third;
+        document.getElementById("player4").innerHTML = fourth;
+        document.getElementById("player5").innerHTML = fifth;
+        document.getElementById("start").innerHTML = "Deler: " + lijst[current];
+      }
+
+      function update() {
+        document.getElementById("score1").innerHTML =
+          document.getElementById("one").value;
+        document.getElementById("score2").innerHTML =
+          document.getElementById("two").value;
+        document.getElementById("score3").innerHTML =
+          document.getElementById("three").value;
+        document.getElementById("score4").innerHTML =
+          document.getElementById("four").value;
+        document.getElementById("score5").innerHTML =
+          document.getElementById("five").value;
+      }
+    </script>
+  </head>
+  <!-- create table -->
+  <body>
+    <h1 id="start">Kleurenwiezen</h1>
+
+    <div class="row">
+      <div class="column">
+        <h2>Type spel</h2>
+        <select id="selected" onchange="getSelectedValue();">
+          <option value="">Kies</option>
+          <option value="soloslim">Solo slim</option>
+          <option value="blote">Blote miserie</option>
+          <option value="grote">Grote miserie</option>
+          <option value="abba">Abbondance</option>
+          <option value="kleine">Kleine miserie</option>
+          <option value="elf">Elf</option>
+          <option value="normaal">Normaal</option>
+        </select>
+        <input type="text" id="slagen" value="0" />
+        <label for="slagen"></label>
+      </div>
+      <div class="column">
+        <h2>Wie speelde?</h2>
+        <input type="checkbox" id="1" value="player1" />
+        <label for="1" id="player1"></label><br />
+        <input type="checkbox" id="2" value="player2" />
+        <label for="2" id="player2"></label><br />
+        <input type="checkbox" id="3" value="player3" />
+        <label for="3" id="player3"></label><br />
+        <input type="checkbox" id="4" value="player4" />
+        <label for="4" id="player4"></label><br />
+        <input type="checkbox" id="5" value="player5" />
+        <label for="5" id="player5"></label><br />
+      </div>
+      <div class="column">
+        <h2>Volgende ronde starten</h2>
+        <button onclick="calc();">Indienen</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <h2>Scorebord</h2>
+        <table>
+          <tr>
+            <th id="name1"></th>
+            <th id="name2"></th>
+            <th id="name3"></th>
+            <th id="name4"></th>
+            <th id="name5"></th>
+          </tr>
+          <tr>
+            <td id="score1">0</td>
+            <td id="score2">0</td>
+            <td id="score3">0</td>
+            <td id="score4">0</td>
+            <td id="score5">0</td>
+          </tr>
+        </table>
+      </div>
+      <div class="column">
+        <h2>Volgorde</h2>
+        <select id="first" onchange="getPlayer();">
+          <option value="">Kies</option>
+          <option value="carine">Carine</option>
+          <option value="frans">Frans</option>
+          <option value="leen">Leen</option>
+          <option value="kristof">Kristof</option>
+          <option value="xeo">Xeo</option>
+        </select>
+        <select id="second" onchange="getPlayer();">
+          <option value="">Kies</option>
+          <option value="carine">Carine</option>
+          <option value="frans">Frans</option>
+          <option value="leen">Leen</option>
+          <option value="kristof">Kristof</option>
+          <option value="xeo">Xeo</option>
+        </select>
+        <select id="third" onchange="getPlayer();">
+          <option value="">Kies</option>
+          <option value="carine">Carine</option>
+          <option value="frans">Frans</option>
+          <option value="leen">Leen</option>
+          <option value="kristof">Kristof</option>
+          <option value="xeo">Xeo</option>
+        </select>
+        <select id="fourth" onchange="getPlayer();">
+          <option value="">Kies</option>
+          <option value="carine">Carine</option>
+          <option value="frans">Frans</option>
+          <option value="leen">Leen</option>
+          <option value="kristof">Kristof</option>
+          <option value="xeo">Xeo</option>
+        </select>
+        <select id="fifth" onchange="getPlayer();">
+          <option value="">Kies</option>
+          <option value="carine">Carine</option>
+          <option value="frans">Frans</option>
+          <option value="leen">Leen</option>
+          <option value="kristof">Kristof</option>
+          <option value="xeo">Xeo</option>
+        </select>
+      </div>
+      <div class="column">
+        <h2>Manueel scorebord aanpassen</h2>
+        <input type="text" id="one" value="1" />
+        <label for="one"></label>
+        <input type="text" id="two" value="2" />
+        <label for="two"></label>
+        <input type="text" id="three" value="3" />
+        <label for="three"></label>
+        <input type="text" id="four" value="4" />
+        <label for="four"></label>
+        <input type="text" id="five" value="5" />
+        <label for="five"></label>
+        <button onclick="update();">Indienen</button>
+      </div>
+    </div>
+  </body>
+</html>
