@@ -40,6 +40,10 @@
         if (selectedValue === "kleine") {
           add(160 * n, 40 * n);
         }
+        if (selectedValue === "elf") {
+          tussen = parseInt(document.getElementById("slagen").value);
+          add(2 * (tussen * 5 + 30) * n, (tussen * 5 + 30) * n);
+        }
         if (selectedValue === "normaal") {
           tussen = parseInt(document.getElementById("slagen").value);
           add(2 * (tussen * 5 + 10) * n, (tussen * 5 + 10) * n);
