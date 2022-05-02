@@ -54,11 +54,11 @@
         document.getElementById("score3").innerHTML = lijstPunten[2];
         document.getElementById("score4").innerHTML = lijstPunten[3];
         document.getElementById("score5").innerHTML = lijstPunten[4];
-        document.cookie = `lijst[0]=${lijstPunten[0]}`;
-        document.cookie = `lijst[1]=${lijstPunten[1]}`;
-        document.cookie = `lijst[2]=${lijstPunten[2]}`;
-        document.cookie = `lijst[3]=${lijstPunten[3]}`;
-        document.cookie = `lijst[4]=${lijstPunten[4]}`;
+        document.cookie = `${lijst[0]}=${lijstPunten[0]}`;
+        document.cookie = `${lijst[1]}=${lijstPunten[1]}`;
+        document.cookie = `${lijst[2]}=${lijstPunten[2]}`;
+        document.cookie = `${lijst[3]}=${lijstPunten[3]}`;
+        document.cookie = `${lijst[4]}=${lijstPunten[4]}`;
 
         current = (current + 1) % 5;
         document.getElementById("start").innerHTML = "Deler: " + lijst[current];
@@ -124,6 +124,33 @@
         document.getElementById("score5").innerHTML =
           document.getElementById("five").value;
       }
+
+      function init() {
+        const c = document.cookie;
+        c.split(";").forEach((cookie) => {
+          let i = 0;
+          lijst[i] = cookie[0];
+          lijstPunten[i] = cookie[1];
+          i++;
+        });
+        document.getElementById("score1").innerHTML = lijstPunten[0];
+        document.getElementById("score2").innerHTML = lijstPunten[1];
+        document.getElementById("score3").innerHTML = lijstPunten[2];
+        document.getElementById("score4").innerHTML = lijstPunten[3];
+        document.getElementById("score5").innerHTML = lijstPunten[4];
+        document.getElementById("name1").innerHTML = lijst[0];
+        document.getElementById("name2").innerHTML = lijst[1];
+        document.getElementById("name3").innerHTML = third;
+        document.getElementById("name4").innerHTML = lijst[3];
+        document.getElementById("name5").innerHTML = lijst[4];
+        document.getElementById("player1").innerHTML = lijst[0];
+        document.getElementById("player2").innerHTML = lijst[1];
+        document.getElementById("player3").innerHTML = lijst[2];
+        document.getElementById("player4").innerHTML = lijst[3];
+        document.getElementById("player5").innerHTML = lijst[4];
+      }
+
+      window.onload = init;
     </script>
   </head>
   <body>
