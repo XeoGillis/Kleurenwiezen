@@ -113,6 +113,9 @@
         document.getElementById("player5").innerHTML =
           document.getElementById("fifth").value;
         document.getElementById("start").innerHTML = "Deler: " + lijst[current];
+
+        document.cookie = `volgorde=${lijst}`;
+        document.cookie = `punten=${lijstPunten}`;
       }
 
       function update() {
@@ -126,9 +129,16 @@
           document.getElementById("four").value;
         document.getElementById("score5").innerHTML =
           document.getElementById("five").value;
+        lijstPunten = [
+          document.getElementById("one").value,
+          document.getElementById("two").value,
+          document.getElementById("three").value,
+          document.getElementById("four").value,
+          document.getElementById("five").value,
+        ];
+        document.cookie = `volgorde=${lijst}`;
+        document.cookie = `punten=${lijstPunten}`;
       }
-
-      function cookie() {}
     </script>
   </head>
   <body>
@@ -248,7 +258,6 @@
         <input type="text" id="five" value="5" />
         <label for="five"></label>
         <button onclick="update();">Indienen</button>
-        <button onclick="cookie();">Vorige spel laden</button>
       </div>
     </div>
   </body>
