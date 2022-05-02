@@ -15,11 +15,6 @@
     </style>
     <script>
       let selectedValue;
-      let first;
-      let second;
-      let third;
-      let fourth;
-      let fifth;
       let lijst;
       let lijstPunten = [0, 0, 0, 0, 0];
       let current = 0;
@@ -93,22 +88,33 @@
       }
 
       function getPlayer() {
-        first = document.getElementById("first").value;
-        second = document.getElementById("second").value;
-        third = document.getElementById("third").value;
-        fourth = document.getElementById("fourth").value;
-        fifth = document.getElementById("fifth").value;
-        lijst = [first, second, third, fourth, fifth];
-        document.getElementById("name1").innerHTML = first;
-        document.getElementById("name2").innerHTML = second;
-        document.getElementById("name3").innerHTML = third;
-        document.getElementById("name4").innerHTML = fourth;
-        document.getElementById("name5").innerHTML = fifth;
-        document.getElementById("player1").innerHTML = first;
-        document.getElementById("player2").innerHTML = second;
-        document.getElementById("player3").innerHTML = third;
-        document.getElementById("player4").innerHTML = fourth;
-        document.getElementById("player5").innerHTML = fifth;
+        lijst = [
+          document.getElementById("first").value,
+          document.getElementById("second").value,
+          document.getElementById("third").value,
+          document.getElementById("fourth").value,
+          document.getElementById("fifth").value,
+        ];
+        document.getElementById("name1").innerHTML =
+          document.getElementById("first").value;
+        document.getElementById("name2").innerHTML =
+          document.getElementById("second").value;
+        document.getElementById("name3").innerHTML =
+          document.getElementById("third").value;
+        document.getElementById("name4").innerHTML =
+          document.getElementById("fourth").value;
+        document.getElementById("name5").innerHTML =
+          document.getElementById("fifth").value;
+        document.getElementById("player1").innerHTML =
+          document.getElementById("first").value;
+        document.getElementById("player2").innerHTML =
+          document.getElementById("second").value;
+        document.getElementById("player3").innerHTML =
+          document.getElementById("third").value;
+        document.getElementById("player4").innerHTML =
+          document.getElementById("fourth").value;
+        document.getElementById("player5").innerHTML =
+          document.getElementById("fifth").value;
         document.getElementById("start").innerHTML = "Deler: " + lijst[current];
       }
 
@@ -125,32 +131,7 @@
           document.getElementById("five").value;
       }
 
-      function init() {
-        const c = document.cookie;
-        c.split(";").forEach((cookie) => {
-          let i = 0;
-          lijst[i] = cookie[0];
-          lijstPunten[i] = cookie[1];
-          i++;
-        });
-        document.getElementById("score1").innerHTML = lijstPunten[0];
-        document.getElementById("score2").innerHTML = lijstPunten[1];
-        document.getElementById("score3").innerHTML = lijstPunten[2];
-        document.getElementById("score4").innerHTML = lijstPunten[3];
-        document.getElementById("score5").innerHTML = lijstPunten[4];
-        document.getElementById("name1").innerHTML = lijst[0];
-        document.getElementById("name2").innerHTML = lijst[1];
-        document.getElementById("name3").innerHTML = third;
-        document.getElementById("name4").innerHTML = lijst[3];
-        document.getElementById("name5").innerHTML = lijst[4];
-        document.getElementById("player1").innerHTML = lijst[0];
-        document.getElementById("player2").innerHTML = lijst[1];
-        document.getElementById("player3").innerHTML = lijst[2];
-        document.getElementById("player4").innerHTML = lijst[3];
-        document.getElementById("player5").innerHTML = lijst[4];
-      }
-
-      window.onload = init;
+      function cookie() {}
     </script>
   </head>
   <body>
@@ -270,6 +251,7 @@
         <input type="text" id="five" value="5" />
         <label for="five"></label>
         <button onclick="update();">Indienen</button>
+        <button onclick="cookie();">Vorige spel laden</button>
       </div>
     </div>
   </body>
